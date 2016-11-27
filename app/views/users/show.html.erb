@@ -1,0 +1,8 @@
+<h1>Users#show</h1>
+<p>Find me in app/views/users/show.html.erb</p>
+
+This is the page <%= @user.email %>
+
+<% if current_user != @user %>
+	Send them a friend request <%= link_to 'here', create_friend_request_path(@user.id), :method => :post %>.
+<% end %>

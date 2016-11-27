@@ -1,0 +1,12 @@
+<p>You have <%= @incoming.count %> friend requests and have <%= @outgoing.count %> sent requests.</p>
+
+<p>
+	Accept or deny your friend requests here: <br>
+	<% @incoming.each do |request| %>
+		<%= User.find(request.user_id).email %>
+		<%= form_tag("/friend_requests/#{request.id}", method: "patch") %>
+			<%= submit_tag("Accept") %>
+		<%= form_tag("/friend_requests/#{request.id}", method: "delete") %>
+			<%= submit_tag("Deny") %>
+	<% end %>
+</p>
