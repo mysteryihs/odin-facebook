@@ -19,6 +19,10 @@ class PostsController < ApplicationController
 		@posts = current_user.feed
 	end
 
+	def show
+		@post = Post.find_by(id: params[:id])
+	end
+
 	private
 		def signed_in?
       unless user_signed_in?

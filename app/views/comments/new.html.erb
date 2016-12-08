@@ -1,0 +1,11 @@
+This is the new page for comments. 
+
+<p>
+<%= @post.content %> submitted by <%= @post.user.email %>
+</p>
+<p>
+<%= form_for [@post, @comment] do |f|%>
+	<%= f.text_area :content %>
+	<%= f.submit "Submit" %>
+<% end %>
+</p>

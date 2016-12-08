@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   get 'friends/destroy'
 
   resources :friend_requests
-  resources :posts
-  resources :comments
+  resources :posts do
+    resources :comments
+  end
   resources :likes
   devise_for :users
   resources :users, only: [:show, :destroy]
