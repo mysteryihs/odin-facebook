@@ -16,9 +16,14 @@
         Signed in as <%= current_user.email %>. Not you?
         <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
         You have <%= current_user.friends.count %> friend(s) and <%= FriendRequest.where(friend: current_user).count %> friend request(s).
+        <%= link_to "View Friend Requests", "/friend_requests" %>
+        <%= link_to "View All Users", "/users" %>
+        <%= link_to "View Your Feed", "/posts" %>
+        <%= link_to "Home", "/" %>
       <% else %>
         <%= link_to "Sign up", new_user_registration_path %> or
         <%= link_to "Sign in", new_user_session_path %>
+        <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
       <% end %>
     </div>
     <%= yield %>

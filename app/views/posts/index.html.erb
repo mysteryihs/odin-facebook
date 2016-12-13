@@ -1,20 +1,24 @@
-post index 
-<% @posts.each do |post| %>
-	<p>
-		<%= post.content %> by <%= post.user.email %> with <%= post.likes.count %> like(s).
-		<% if !post.already_liked?(current_user.id) %>
-			<%= form_tag("/likes", method: "post") do %>
-				<%= hidden_field_tag(:post_id, post.id) %>
-				<%= hidden_field_tag(:user_id, current_user.id) %>
-				<%= submit_tag("Like") %>
-			<% end %>
-		<% end %>
-		<br> Comments: 
-		<% post.comments.each do |comment| %>
-			<%= comment.content %> <br>
-		<% end %>
+<b>Post feed</b></br>
+<% unless @posts.empty? %>
+	<% @posts.each do |post| %>
 		<p>
-			<%= link_to "Add comment", "#{post.id}/comments/new" %>
+			<%= post.content %> by <%= post.user.email %> with <%= post.likes.count %> like(s).
+			<% if !post.already_liked?(current_user.id) %>
+				<%= form_tag("/likes", method: "post") do %>
+					<%= hidden_field_tag(:post_id, post.id) %>
+					<%= hidden_field_tag(:user_id, current_user.id) %>
+					<%= submit_tag("Like") %>
+				<% end %>
+			<% end %>
+			<br> Comments: 
+			<% post.comments.each do |comment| %>
+				<%= comment.content %> <br>
+			<% end %>
+			<p>
+				<%= link_to "Add comment", "#{post.id}/comments/new" %>
+			</p>
 		</p>
-	</p>
+	<% end %>
+<% else %>
+	You have no posts. <%= link_to "Create a post here", "/posts/new" %>
 <% end %>

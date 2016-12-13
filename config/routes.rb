@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :comments
   end
   resources :likes
-  devise_for :users
+  devise_for :users, :controllers => { registrations: "registrations", :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :users, only: [:show, :destroy]
 	root to: 'static_pages#home'
   get 'static_pages/home'
