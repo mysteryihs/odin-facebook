@@ -9,3 +9,7 @@ Uses the following:
 * Devise
 * Facebook Omniauth
 * Mailers
+
+Viewable at: https://guarded-bastion-44854.herokuapp.com/
+
+Project isn't styled yet and is barebones mostly because I'm too lazy to pretty it up.
